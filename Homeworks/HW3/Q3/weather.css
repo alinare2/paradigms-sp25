@@ -8,6 +8,9 @@ h1, h2 {color:  purple;}
 }
 
 /* Selects all the "div" elements whose class = "myparagraph" */
-div.myparagraph { color:  red; }
+div.myparagraph { 
+	color:  red; 
+	font-weight: bold;
+}
 
 
