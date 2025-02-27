@@ -1,0 +1,124 @@
+
+/* Base structure */
+h1,h2,h3,h4 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.site-wrapper, .body, .aboutBody{
+  display: flex;
+}
+
+.site-wrapper, .body {
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.body, .aboutBody, .contactBody, .projectsBody{
+  color: rgb(198, 198, 198);
+  align-self: center;
+  margin-top: 100px;
+}
+
+textarea::placeholder {
+  color: #cec9c9;  
+}
+
+.aboutBody {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 100px;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+.quote {
+  font-style: italic;
+  font-size: 40px;
+  font-family: quote;
+}
+
+.body > h2 {
+  color:rgb(151, 146, 146);
+  margin: 50px;
+  font-size: 25px;
+}
+
+.body > img {
+  border-radius: 20px;
+}
+
+#email-btn{
+  border-radius: 8px;
+  font-size: 30px;
+  border: none;
+  padding: 5px 10px 5px 10px;
+  margin-top: 60px;
+}
+
+#email-input{
+  margin: 20px;
+  width: 50vw;
+  height: 200px;
+  border-style: solid;
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.328);
+  color: white;
+}
+
+.bg-img {
+  height: 150vh;
+  width: 100vw;
+  object-fit: cover;
+  filter: brightness(0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.aboutInfo, .contactBody {
+  width: 500px;
+}
+
+.accordion {
+	--bs-accordion-btn-color: rgb(255, 255, 255);
+	--bs-accordion-btn-bg: rgb(69, 63, 109);
+	--bs-accordion-active-color: rgb(196, 196, 196);
+	--bs-accordion-active-bg: rgb(130, 129, 136);
+}
+
+.accordion-body {
+  background-color: rgb(255, 255, 255);
+}
+
+/* link styling */
+/* unvisited link */
+a {
+  color: red;
+}
+/* mouse over link */
+a:hover {
+  color: rgb(48, 48, 202);
+}
+/* selected link */
+a:active {
+  color: lightblue;
+}
+
+.contact-icon {
+  width: 50px;
+  margin-right: 10px;
+}
+
+.projectsBody {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  
+}
+
+.card {
+  width: 200px;
+  height: 350px;
+  flex-shrink: 2;
+}
