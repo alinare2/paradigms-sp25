@@ -8,7 +8,7 @@ function toCelsius(){
 
 	//check if input was number
 	if (isNaN(celsius)){
-		warning = "<div class=myparagraph>This is not a number!<div>";
+		warning = "<div class=myparagraph>This is not a number!</div>";
 		let parent = document.getElementById("result-parent")
 		parent.innerHTML = warning;
 	}
