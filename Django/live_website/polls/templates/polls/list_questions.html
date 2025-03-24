@@ -1,0 +1,20 @@
+{% extends 'polls/base.html' %}
+
+{% block title %}List of all latest 5 questions{% endblock %}
+
+{% block content %}
+    <ul>
+    {% if questions %}
+        {% for question in questions %}
+            <li>
+                <a href="/polls/{{ question.id }}/">
+                {{ question }}
+                </a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <p>We dont have any questions yet :(</p>
+    {% endif %}
+
+    </ul>
+{% endblock %}
