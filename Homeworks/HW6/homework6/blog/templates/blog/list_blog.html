@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+
+{% block title %}List of all latest blogs{% endblock %}
+
+{% block content %}
+    <h1><strong>List of all blog posts</strong></h1>
+    <br>
+    <ul>
+    {% if blogs %}
+        {% for blog in blogs %}
+            <li>
+                <a href="/blog/{{ blog.id }}/">
+                {{ blog }}
+                </a>
+            </li>
+        {% endfor %}
+    {% else %}
+        <p>We dont have any blog post yet :(</p>
+    {% endif %}
+    </ul>
+{% endblock %}
