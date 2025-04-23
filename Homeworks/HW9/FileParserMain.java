@@ -10,6 +10,9 @@ import java.io.IOException;
 
 
 public class FileParserMain {
+    //locking objects
+    static final Object nameLock = new Object();
+    static final Object occupationLock = new Object();
     public static void main(String[] args) throws InterruptedException {
         /*
             namesCount and occupationsCount are shared objects among threads.
@@ -17,10 +20,11 @@ public class FileParserMain {
             Depending on the class you choose to use, you might get a race condition!
             Refer to the Homework's HINTs section
          */
+
         // key = First Name, value = total count
-        Map<String, /* TODO Static Type for the Value */> namesCount = /* TODO: what is the right type here? */;
+        Map<String, Integer> namesCount = new ConcurrentHashMap<>();
         // key = Ocupation, value = total count
-        Map<String, /* TODO Static Type for the Value */> occupationsCount = /* TODO: what is the right type here? */;
+        Map<String, Integer> occupationsCount = new ConcurrentHashMap<>();
 
         // execute the tasks with an ExecutorService
         ExecutorService executor = Executors.newCachedThreadPool();
@@ -40,6 +44,6 @@ public class FileParserMain {
         namesCount.forEach((name, count) -> System.out.println(name + "\t" + count));
 
         System.out.println("Ocupation\tTotal");
-        occupationCount.forEach((occupation, count) -> System.out.println(occupation + "\t" + count));
+        occupationsCount.forEach((occupation, count) -> System.out.println(occupation + "\t" + count));
     }
 }
