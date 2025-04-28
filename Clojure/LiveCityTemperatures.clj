@@ -17,20 +17,39 @@
 
 
 ;;; apply the callback function to each element in the `rows` list 
-
-
+(defn parse-row [row] (let
+																								[column (str/split row #",")
+																									city (first column)
+																									temperature (Float/parseFloat (nth column 1))]
+																									{city (list temperature)}
+																						)
+)
+(def rows (map parse-row rows))
 
 ; use the `reduce` function to merge temperatures by city to create a map like this:
 ; {"Los Angeles" (70.5 71.2 ...), "Honolulu" (80.3 81.0 ...), "South Bend" (55.8 54.5 ...)}
 ; store it on a variable `temperatures_map`
 ;;;; map-merger: function that merge two maps
+(defn map-merger [x y] (concat (or x '()) y))
+; x = e1[e2_city] --> nil
+; y = e2_temperature
 ;;;; city-reducer: callback that takes `e1` `e2` and updates `e1` with what is in `e2`
-(def temperatures_map (reduce city-reducer rows))
+(defn city-reducer [e1 e2]
+																		(let [e2_city (key (first e2))
+																								e2_temperature (val (first e2))] 
+																								(update e1 e2_city map-merger e2_temperature)
+																								)
+)
 
-; Average function
+
+(def temperatures_map (reduce city-reducer rows))
+(println temperatures_map)
+
+; ; Average function
 (defn avg [p] (double (/ (reduce + p)  (count p))))
 ; Use `doseq` to compute the statistics per city
 (println "Statistics temperatures per city")
+; for city, temperatures in temperatures_map.items():
 (doseq [[city temperatures] temperatures_map]
 					 (println city 
 					 			"\n\tmin\t" (apply min temperatures)
